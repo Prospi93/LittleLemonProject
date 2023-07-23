@@ -2,10 +2,6 @@
     margin: 0;
     padding: 0;
   }
-
-  body {
-    background-color: #495E57;
-  }
   
   .nav {
     background-color: #EDEFEE;
@@ -48,17 +44,24 @@
 
   .containerMain {
     display: grid;
-    grid-template-columns: 1fr;
-    margin: 1%;
+    grid-template-columns: 1fr 1fr;
     text-align: center;
+    place-items: center;
+    background-color: #495E57;
+    height: 75vh;
+  }
+
+  .containerMain img {
+    border-radius: 20px;
+    height: 75%;
+    width: 50%;
   }
 
   .containerFooter {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     background-color: #EDEFEE;
-    margin-top: 50%;
-    height: 50vh;
+    height: 10vh;
     border-radius: 12px;
     text-align: center;
   }
