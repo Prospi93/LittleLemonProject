@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function BookingForm(props) {
   const { availableTimes, dispatchAvailableTimes, updateTimes } = props;
+  const navigate = useNavigate(); // Otteniamo l'istanza di navigate
 
   const stile = { display: "grid", maxWidth: "200px", gap: "20px" };
   const stileInput = { borderRadius: "15px", textAlign: "center" };
@@ -29,13 +31,24 @@ export default function BookingForm(props) {
     updateTimes(selectedDate);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (isSubmitDisabled()) {
       alert("Please choose a date and time!");
     } else {
-      alert("Table reserved successfully!");
-      clearForm();
+      const formData = {
+        date,
+        resTime,
+        guest,
+        occasion,
+      };
+      const success = await props.onSubmitForm(formData); // Chiamiamo la funzione di submitForm passata come prop
+      if (success) {
+        clearForm();
+        navigate('/confirmed-booking'); // Navigazione alla pagina di conferma dopo la prenotazione
+      } else {
+        alert("Error submitting form. Please try again later.");
+      }
     }
   };
 
@@ -70,9 +83,8 @@ export default function BookingForm(props) {
         <option>Birthday</option>
         <option>Anniversary</option>
       </select>
-      <input style={stileBottone} type="submit" value="Make Your reservation" disabled={isSubmitDisabled()}></input>
+      <input style={stileBottone} type="submit" value="Make Your reservation" disabled={isSubmitDisabled()} aria-label="On Click"></input>
     </form>
   );
 }
-
 

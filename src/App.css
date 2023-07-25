@@ -81,6 +81,25 @@
     margin-left: 10%;
   }
 
+  #bookingConfirmed {
+    height: 50vh;
+    background-color: #495E57;
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  #bookingConfirmed h2 {
+    color: yellow;
+    font-weight: bold;
+    padding-top: 100px;
+  }
+
+  #bookingConfirmed p {
+    color: yellow;
+    font-weight: bold;
+    padding-top: 50px;
+  }
+
   
   /* Aggiungiamo un media query per rendere la navbar flessibile su dispositivi con larghezza inferiore a 768px (esempio) */
   @media screen and (max-width: 768px) {

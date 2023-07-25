@@ -12,4 +12,3 @@ export const fetchData = async (date) => {
     throw new Error('Error fetching data:', error);
   }
 };
-
